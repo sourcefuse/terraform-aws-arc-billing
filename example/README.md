@@ -1,4 +1,39 @@
-# terraform-aws-module-template example
+# [terraform-aws-arc-billing](https://github.com/sourcefuse/terraform-aws-arc-billing)
+
+## Overview
+
+AWS Billing and Budgets for the SourceFuse DevOps Reference Architecture Infrastructure.
+
+## First Time Usage
+```shell
+terraform init -backend-config=config.dev.hcl
+```
+
+Create a `dev` workspace
+```shell
+terraform workspace new dev
+```
+
+Apply Terraform
+```shell
+terraform apply
+```
+
+## Production Setup
+```shell
+terraform init -backend-config=config.prod.hcl
+```
+
+Create a `prod` workspace
+```shell
+terraform workspace new prod
+```
+
+Apply Terraform
+```shell
+terraform apply -var-file=prod.tfvars
+```
+
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
