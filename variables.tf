@@ -18,24 +18,6 @@ variable "encryption_enabled" {
   default     = true
 }
 
-variable "kms_master_key_id" {
-  type        = string
-  description = "The ID of a KMS CMK to be used for encryption (see https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-sns-policy.html#protect-sns-sse for appropriate key policies)."
-  default     = null
-}
-
-variable "kms_key_deletion_window_in_days" {
-  type        = number
-  description = "Duration in days after which the key is deleted after destruction of the resources"
-  default     = 7
-}
-
-variable "kms_enable_key_rotation" {
-  type        = bool
-  description = "Specifies whether key rotation is enabled"
-  default     = true
-}
-
 variable "slack_webhook_url" {
   type        = string
   description = "The URL of Slack webhook. Only used when `notifications_enabled` is `true`"
