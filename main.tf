@@ -29,3 +29,12 @@ module "budgets" {
   context = module.this.context
 }
 
+
+resource "aws_sns_topic_subscription" "email_subscription" {
+  count     = length(var.billing_notification_emails)
+  topic_arn = module.budgets.sns_topic_arn
+  protocol  = "email"
+  endpoint  = var.billing_notification_emails[count.index]
+}
+
+

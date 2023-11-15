@@ -28,16 +28,6 @@ output "lambda_cloudwatch_log_group_arn" {
   value       = module.example_budgets.lambda_cloudwatch_log_group_arn
 }
 
-output "kms_key_arn" {
-  description = "ARN of the KMS CMK that was created specifically for budget notifications"
-  value       = module.example_budgets.kms_key_arn
-}
-
-output "kms_key_id" {
-  description = "ID of the KMS CMK that is used for SNS alerts"
-  value       = module.example_budgets.kms_key_id
-}
-
 output "sns_topic_arn" {
   description = "ARN of the SNS topic created for alerts"
   value       = module.example_budgets.sns_topic_arn

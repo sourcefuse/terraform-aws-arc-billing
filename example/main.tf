@@ -11,7 +11,7 @@ terraform {
     }
   }
   # backend "s3" {
-    
+
   # }
 }
 
@@ -35,5 +35,7 @@ module "example_budgets" {
   slack_channel     = var.slack_channel
   slack_username    = var.slack_username
 
+  billing_notification_emails = var.billing_notification_emails
 }
+
 

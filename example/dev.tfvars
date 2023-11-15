@@ -4,9 +4,9 @@ environment = "dev"
 
 budgets = [
   {
-    name            = "ec2-monthly-budget"
+    name            = "ec2-monthly-budget-1000"
     budget_type     = "COST"
-    limit_amount    = "2500"
+    limit_amount    = "500"
     limit_unit      = "USD"
     time_period_end = "2025-06-15_00:00"
     time_unit       = "MONTHLY"
@@ -36,9 +36,9 @@ budgets = [
     }
   },
   {
-    name         = "total-monthly"
+    name         = "total-monthly-2500"
     budget_type  = "COST"
-    limit_amount = "10000"
+    limit_amount = "2500"
     limit_unit   = "USD"
     time_unit    = "MONTHLY"
 
@@ -57,3 +57,4 @@ slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCC
 slack_channel         = "aws-budget-alerts"
 slack_username        = "slack_sa"
 
+billing_notification_emails = ["hernandez.anyiabey@sourcefuse.com"]

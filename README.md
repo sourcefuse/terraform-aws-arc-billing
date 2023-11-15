@@ -29,6 +29,10 @@ module "example_budgets" {
 ```
 
 Edit the [dev.tfvars](./example/dev.tfvars) file and provide desired values.  
+The `budgets` variable is used to define list billing budgets to be managed by terraform  
+This module sends notifications to both slack and email.  
+Use the `billing_notification_emails`, to pass emails that will receive the billing alarms  
+
 ```hcl
 region      = "us-east-1"
 namespace   = "arc"
@@ -88,6 +92,7 @@ notifications_enabled = true
 slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCCCCC"
 slack_channel         = "aws-budget-alerts"
 slack_username        = "slack_sa"
+billing_notification_emails = ["hernandez.anyiabey@sourcefuse.com"]
 ```
 
 ## First Time Usage
@@ -138,6 +143,9 @@ Destroy Terraform
 terraform destroy -var-file dev.tfvars  
 ```
 
+***Note:***  
+&emsp;&emsp;***The emails will need to confirm subscription to SNS, in order to continue to receive billing alarms.***     
+&emsp;&emsp;***An email will be sent from AWS to the emails***
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
