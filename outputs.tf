@@ -50,6 +50,6 @@ output "sns_topic_name" {
 
 output "email_sns_topic_subscription" {
   description = "The name of the SNS subscription created for notifications"
-  value       = aws_sns_topic_subscription.email_subscription.*.id
+  value       = aws_sns_topic_subscription.email_subscription[*].id
 }
 

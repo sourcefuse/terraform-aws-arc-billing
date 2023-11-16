@@ -145,7 +145,7 @@ terraform destroy -var-file dev.tfvars
 
 ***Note:***  
 &emsp;&emsp;***The emails will need to confirm subscription to SNS, in order to continue to receive billing alarms.***     
-&emsp;&emsp;***An email will be sent from AWS to the emails***
+&emsp;&emsp;***An email will be sent from AWS to the emails***    
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
