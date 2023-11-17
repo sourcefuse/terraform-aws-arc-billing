@@ -1,18 +1,151 @@
-# terraform-aws-module-template
+# terraform-aws-arc-billing
 
 ## Overview
 
-SourceFuse AWS Reference Architecture (ARC) Terraform module for managing _________.
+SourceFuse AWS Reference Architecture (ARC) Terraform module for managing AWS budgets, and sending billing alarms to Slack.
 
 ## Usage
 
 To see a full example, check out the [main.tf](./example/main.tf) file in the example folder.  
 
 ```hcl
-module "this" {
-  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-<module_name>"
+module "example_budgets" {
+  source = "sourcefuse/arc-billing/aws"
+
+  namespace   = var.namespace
+  environment = var.environment
+
+  budgets = var.budgets
+
+  notifications_enabled = var.notifications_enabled
+  encryption_enabled    = var.encryption_enabled
+
+  slack_webhook_url = var.slack_webhook_url
+  slack_channel     = var.slack_channel
+  slack_username    = var.slack_username
+
 }
+
 ```
+
+Edit the [dev.tfvars](./example/dev.tfvars) file and provide desired values.  
+The `budgets` variable is used to define list billing budgets to be managed by terraform  
+This module sends notifications to both slack and email.  
+Use the `billing_notification_emails`, to pass emails that will receive the billing alarms  
+
+```hcl
+region      = "us-east-1"
+namespace   = "arc"
+environment = "dev"
+
+budgets = [
+  {
+    name            = "ec2-monthly-budget"
+    budget_type     = "COST"
+    limit_amount    = "2500"
+    limit_unit      = "USD"
+    time_period_end = "2025-06-15_00:00"
+    time_unit       = "MONTHLY"
+
+    cost_filter = {
+      Service = ["Amazon Elastic Compute Cloud - Compute"]
+    }
+
+    cost_types = {
+      include_credit             = true
+      include_discount           = true
+      include_other_subscription = false
+      include_recurring          = true
+      include_refund             = true
+      include_subscription       = true
+      include_support            = false
+      include_tax                = true
+      include_upfront            = true
+      use_blended                = false
+    }
+
+    notification = {
+      comparison_operator = "GREATER_THAN"
+      threshold           = "100"
+      threshold_type      = "PERCENTAGE"
+      notification_type   = "FORECASTED"
+    }
+  },
+  {
+    name         = "total-monthly"
+    budget_type  = "COST"
+    limit_amount = "10000"
+    limit_unit   = "USD"
+    time_unit    = "MONTHLY"
+
+    notification = {
+      comparison_operator = "GREATER_THAN"
+      threshold           = "100"
+      threshold_type      = "PERCENTAGE"
+      notification_type   = "FORECASTED"
+    }
+  }
+]
+
+encryption_enabled    = true
+notifications_enabled = true
+slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCCCCC"
+slack_channel         = "aws-budget-alerts"
+slack_username        = "slack_sa"
+billing_notification_emails = ["hernandez.anyiabey@sourcefuse.com"]
+```
+
+## First Time Usage
+***uncomment the backend block in [main.tf](./example/main.tf)***
+```shell
+terraform init -backend-config=config.dev.hcl 
+```
+***If testing locally, `terraform init` should be fine***
+
+Create a `dev` workspace
+```shell
+terraform workspace new dev
+```
+
+Plan Terraform
+```shell
+terraform plan -var-file dev.tfvars
+```
+
+Apply Terraform
+```shell
+terraform apply -var-file dev.tfvars
+```
+
+## Production Setup
+```shell
+terraform init -backend-config=config.prod.hcl
+```
+
+Create a `prod` workspace
+```shell
+terraform workspace new prod
+```
+
+Plan Terraform
+```shell
+terraform plan -var-file prod.tfvars
+```
+
+Apply Terraform
+```shell
+terraform apply -var-file prod.tfvars  
+```
+
+## Cleanup  
+Destroy Terraform
+```shell
+terraform destroy -var-file dev.tfvars  
+```
+
+***Note:***  
+&emsp;&emsp;***The emails will need to confirm subscription to SNS, in order to continue to receive billing alarms.***     
+&emsp;&emsp;***An email will be sent from AWS to the emails***    
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
