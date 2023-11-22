@@ -4,27 +4,27 @@ environment = "dev"
 
 budgets = [
   {
-    name            = "ec2-monthly-budget-1000"
+    name            = "ec2-daily-budget-1000"
     budget_type     = "COST"
-    limit_amount    = "500"
+    limit_amount    = "0.30"
     limit_unit      = "USD"
-    time_period_end = "2025-06-15_00:00"
-    time_unit       = "MONTHLY"
+    time_period_start = "2023-11-21_00:00"
+    time_unit       = "DAILY"
 
     cost_filter = {
       Service = ["Amazon Elastic Compute Cloud - Compute"]
     }
 
     cost_types = {
-      include_credit             = true
       include_discount           = true
-      include_other_subscription = false
+      include_other_subscription = true
       include_recurring          = true
-      include_refund             = true
       include_subscription       = true
-      include_support            = false
       include_tax                = true
       include_upfront            = true
+      include_support            = true
+      include_refund             = false
+      include_credit             = false
       use_blended                = false
     }
 
@@ -32,21 +32,37 @@ budgets = [
       comparison_operator = "GREATER_THAN"
       threshold           = "100"
       threshold_type      = "PERCENTAGE"
-      notification_type   = "FORECASTED"
+      notification_type   = "ACTUAL"
+      subscriber_email_addresses = ["hernandez.anyiabey@sourcefuse.com"]
     }
   },
   {
-    name         = "total-monthly-2500"
+    name         = "total-daily-2500"
     budget_type  = "COST"
-    limit_amount = "2500"
+    limit_amount = "1"
+    time_period_start = "2023-11-21_00:00"
     limit_unit   = "USD"
-    time_unit    = "MONTHLY"
+    time_unit    = "DAILY"
+
+    cost_types = {
+      include_discount           = true
+      include_other_subscription = true
+      include_recurring          = true
+      include_subscription       = true
+      include_tax                = true
+      include_upfront            = true
+      include_support            = true
+      include_refund             = false
+      include_credit             = false
+      use_blended                = false
+    }
 
     notification = {
       comparison_operator = "GREATER_THAN"
       threshold           = "100"
       threshold_type      = "PERCENTAGE"
-      notification_type   = "FORECASTED"
+      notification_type   = "ACTUAL"
+      subscriber_email_addresses = ["hernandez.anyiabey@sourcefuse.com"]
     }
   }
 ]
@@ -57,4 +73,4 @@ slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCC
 slack_channel         = "aws-budget-alerts"
 slack_username        = "slack_sa"
 
-billing_notification_emails = ["example@sourcefuse.com"]
+billing_notification_emails = ["hernandez.anyiabey@sourcefuse.com"]
