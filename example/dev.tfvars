@@ -8,7 +8,7 @@ budgets = [
     budget_type     = "COST"
     limit_amount    = "0.30"
     limit_unit      = "USD"
-    time_period_start = "2023-11-21_00:00"
+    time_period_start = "2023-11-22_00:00"
     time_unit       = "DAILY"
 
     cost_filter = {
@@ -33,13 +33,14 @@ budgets = [
       threshold           = "100"
       threshold_type      = "PERCENTAGE"
       notification_type   = "ACTUAL"
+      subscriber_email_addresses = ["example@sourcefuse.com"]
     }
   },
   {
     name         = "total-daily-2500"
     budget_type  = "COST"
     limit_amount = "1"
-    time_period_start = "2023-11-21_00:00"
+    time_period_start = "2023-11-22_00:00"
     limit_unit   = "USD"
     time_unit    = "DAILY"
 
@@ -61,6 +62,7 @@ budgets = [
       threshold           = "100"
       threshold_type      = "PERCENTAGE"
       notification_type   = "ACTUAL"
+      subscriber_email_addresses = ["example@sourcefuse.com"]
     }
   }
 ]

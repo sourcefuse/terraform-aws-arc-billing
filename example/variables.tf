@@ -57,5 +57,6 @@ variable "slack_username" {
 variable "billing_notification_emails" {
   type        = list(string)
   description = "List of email addresses to subscribe to budget sns topic"
+  default = []
 }
 
