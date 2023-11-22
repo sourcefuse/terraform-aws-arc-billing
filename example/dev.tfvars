@@ -4,12 +4,12 @@ environment = "dev"
 
 budgets = [
   {
-    name            = "ec2-daily-budget-1000"
-    budget_type     = "COST"
-    limit_amount    = "0.30"
-    limit_unit      = "USD"
+    name              = "ec2-daily-budget-1000"
+    budget_type       = "COST"
+    limit_amount      = "0.30"
+    limit_unit        = "USD"
     time_period_start = "2023-11-22_00:00"
-    time_unit       = "DAILY"
+    time_unit         = "DAILY"
 
     cost_filter = {
       Service = ["Amazon Elastic Compute Cloud - Compute"]
@@ -29,20 +29,20 @@ budgets = [
     }
 
     notification = {
-      comparison_operator = "GREATER_THAN"
-      threshold           = "100"
-      threshold_type      = "PERCENTAGE"
-      notification_type   = "ACTUAL"
+      comparison_operator        = "GREATER_THAN"
+      threshold                  = "100"
+      threshold_type             = "PERCENTAGE"
+      notification_type          = "ACTUAL"
       subscriber_email_addresses = ["example@sourcefuse.com"]
     }
   },
   {
-    name         = "total-daily-2500"
-    budget_type  = "COST"
-    limit_amount = "1"
+    name              = "total-daily-2500"
+    budget_type       = "COST"
+    limit_amount      = "1"
     time_period_start = "2023-11-22_00:00"
-    limit_unit   = "USD"
-    time_unit    = "DAILY"
+    limit_unit        = "USD"
+    time_unit         = "DAILY"
 
     cost_types = {
       include_discount           = true
@@ -58,10 +58,10 @@ budgets = [
     }
 
     notification = {
-      comparison_operator = "GREATER_THAN"
-      threshold           = "100"
-      threshold_type      = "PERCENTAGE"
-      notification_type   = "ACTUAL"
+      comparison_operator        = "GREATER_THAN"
+      threshold                  = "100"
+      threshold_type             = "PERCENTAGE"
+      notification_type          = "ACTUAL"
       subscriber_email_addresses = ["example@sourcefuse.com"]
     }
   }

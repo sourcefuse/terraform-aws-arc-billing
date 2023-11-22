@@ -21,7 +21,7 @@ module "budgets" {
 
   notifications_enabled = var.notifications_enabled
   encryption_enabled    = var.encryption_enabled
-  kms_master_key_id = var.budgets_kms_master_key
+  kms_master_key_id     = var.budgets_kms_master_key
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
