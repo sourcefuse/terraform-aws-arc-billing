@@ -33,7 +33,6 @@ budgets = [
       threshold           = "100"
       threshold_type      = "PERCENTAGE"
       notification_type   = "ACTUAL"
-      subscriber_email_addresses = ["hernandez.anyiabey@sourcefuse.com"]
     }
   },
   {
@@ -62,7 +61,6 @@ budgets = [
       threshold           = "100"
       threshold_type      = "PERCENTAGE"
       notification_type   = "ACTUAL"
-      subscriber_email_addresses = ["hernandez.anyiabey@sourcefuse.com"]
     }
   }
 ]
@@ -73,4 +71,4 @@ slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCC
 slack_channel         = "aws-budget-alerts"
 slack_username        = "slack_sa"
 
-billing_notification_emails = ["hernandez.anyiabey@sourcefuse.com"]
+billing_notification_emails = ["example@sourcefuse.com"]
