@@ -12,3 +12,6 @@
 
 # golang
 *.go text=auto eol=lf
+
+# lambda binaries
+**/builds*

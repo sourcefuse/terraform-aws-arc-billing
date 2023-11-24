@@ -18,6 +18,13 @@ variable "encryption_enabled" {
   default     = true
 }
 
+variable "budgets_kms_master_key" {
+  type        = string
+  description = "KMS CMK to be used for encryption"
+  default     = null
+}
+
+
 variable "slack_webhook_url" {
   type        = string
   description = "The URL of Slack webhook. Only used when `notifications_enabled` is `true`"
@@ -39,6 +46,7 @@ variable "slack_username" {
 variable "billing_notification_emails" {
   type        = list(string)
   description = "List of email addresses to subscribe to budget sns topic"
+  default     = []
 }
 
 variable "billing_alerts_sns_subscribers" {
