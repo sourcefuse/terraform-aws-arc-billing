@@ -4,9 +4,9 @@ environment = "dev"
 
 budgets = [
   {
-    name            = "ec2-monthly-budget-1000"
+    name            = "ec2-monthly-budget-50"
     budget_type     = "COST"
-    limit_amount    = "500"
+    limit_amount    = "50"
     limit_unit      = "USD"
     time_period_end = "2025-06-15_00:00"
     time_unit       = "MONTHLY"
@@ -16,45 +16,54 @@ budgets = [
     }
 
     cost_types = {
-      include_credit             = true
       include_discount           = true
-      include_other_subscription = false
+      include_other_subscription = true
       include_recurring          = true
-      include_refund             = true
       include_subscription       = true
-      include_support            = false
       include_tax                = true
       include_upfront            = true
+      include_support            = true
+      include_refund             = false
+      include_credit             = false
       use_blended                = false
     }
 
     notification = {
-      comparison_operator = "GREATER_THAN"
-      threshold           = "100"
-      threshold_type      = "PERCENTAGE"
-      notification_type   = "FORECASTED"
+      comparison_operator        = "GREATER_THAN"
+      threshold                  = "100"
+      threshold_type             = "PERCENTAGE"
+      notification_type          = "ACTUAL"
+      subscriber_email_addresses = ["example@example-email.com"]
     }
   },
   {
-    name         = "total-monthly-2500"
+    name         = "total-monthly-100"
     budget_type  = "COST"
-    limit_amount = "2500"
+    limit_amount = "100"
     limit_unit   = "USD"
     time_unit    = "MONTHLY"
 
     notification = {
-      comparison_operator = "GREATER_THAN"
-      threshold           = "100"
-      threshold_type      = "PERCENTAGE"
-      notification_type   = "FORECASTED"
+      comparison_operator        = "GREATER_THAN"
+      threshold                  = "100"
+      threshold_type             = "PERCENTAGE"
+      notification_type          = "ACTUAL"
+      subscriber_email_addresses = ["example@example-email.com"]
     }
   }
 ]
 
 encryption_enabled    = true
 notifications_enabled = true
-slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCCCCC"
-slack_channel         = "aws-budget-alerts"
-slack_username        = "slack_sa"
+slack_webhook_url     = null
+slack_channel         = null
+slack_username        = null
 
-billing_notification_emails = ["example@sourcefuse.com"]
+billing_alerts_sns_subscribers = {
+  "opsgenie" = {
+    protocol               = "https"
+    endpoint               = "https://api.opsgenie.com/v1/json/amazonsns?apiKey=xxxx-xxx-xx-xxx-xxxxxx"
+    endpoint_auto_confirms = true
+    raw_message_delivery   = false
+  }
+}

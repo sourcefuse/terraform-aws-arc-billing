@@ -2,12 +2,12 @@
 ## defaults
 ################################################################################
 terraform {
-  required_version = "~> 1.3, < 2.0.0"
+  required_version = "~> 1.5"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = "~> 5.0"
     }
   }
 }
@@ -21,6 +21,7 @@ module "budgets" {
 
   notifications_enabled = var.notifications_enabled
   encryption_enabled    = var.encryption_enabled
+  kms_master_key_id     = var.budgets_kms_master_key
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
@@ -29,12 +30,12 @@ module "budgets" {
   context = module.this.context
 }
 
+resource "aws_sns_topic_subscription" "this" {
+  for_each = var.billing_alerts_sns_subscribers
 
-resource "aws_sns_topic_subscription" "email_subscription" {
-  count     = length(var.billing_notification_emails)
-  topic_arn = module.budgets.sns_topic_arn
-  protocol  = "email"
-  endpoint  = var.billing_notification_emails[count.index]
+  topic_arn              = module.budgets.sns_topic_arn
+  protocol               = each.value.protocol
+  endpoint               = each.value.endpoint
+  endpoint_auto_confirms = each.value.endpoint_auto_confirms
+  raw_message_delivery   = each.value.raw_message_delivery
 }
-
-
