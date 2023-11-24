@@ -4,9 +4,9 @@ environment = "dev"
 
 budgets = [
   {
-    name            = "ec2-monthly-budget-1000"
+    name            = "ec2-monthly-budget-50"
     budget_type     = "COST"
-    limit_amount    = "500"
+    limit_amount    = "50"
     limit_unit      = "USD"
     time_period_end = "2025-06-15_00:00"
     time_unit       = "MONTHLY"
@@ -36,9 +36,9 @@ budgets = [
     }
   },
   {
-    name         = "total-monthly-2500"
+    name         = "total-monthly-100"
     budget_type  = "COST"
-    limit_amount = "2500"
+    limit_amount = "212.73"
     limit_unit   = "USD"
     time_unit    = "MONTHLY"
 
@@ -53,8 +53,17 @@ budgets = [
 
 encryption_enabled    = true
 notifications_enabled = true
-slack_webhook_url     = "https://hooks.slack.com/services/AAAAAAAA/BBBBBBBB/CCCCCCC"
-slack_channel         = "aws-budget-alerts"
-slack_username        = "slack_sa"
+slack_webhook_url     = null
+slack_channel         = null
+slack_username        = null
 
-billing_notification_emails = ["example@sourcefuse.com"]
+billing_notification_emails = ["vijay.stephen@sourcefuse.com"]
+
+billing_alerts_sns_subscribers = {
+  "email" = {
+    protocol               = "email"
+    endpoint               = "vijay.stephen@sourcefuse.com"
+    endpoint_auto_confirms = true
+    raw_message_delivery   = false
+  }
+}
