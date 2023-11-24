@@ -59,8 +59,6 @@ slack_webhook_url     = null
 slack_channel         = null
 slack_username        = null
 
-billing_notification_emails = ["example@example-email.com"]
-
 billing_alerts_sns_subscribers = {
   "opsgenie" = {
     protocol               = "https"

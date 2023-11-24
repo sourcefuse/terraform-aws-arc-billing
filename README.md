@@ -25,7 +25,6 @@ module "example_budgets" {
   slack_channel     = var.slack_channel
   slack_username    = var.slack_username
 
-  billing_notification_emails = var.billing_notification_emails
   billing_alerts_sns_subscribers = var.billing_alerts_sns_subscribers
 }
 
@@ -97,8 +96,6 @@ notifications_enabled = true
 slack_webhook_url     = null
 slack_channel         = null
 slack_username        = null
-
-billing_notification_emails = ["example@example-email.com"]
 
 billing_alerts_sns_subscribers = {
   "opsgenie" = {
