@@ -33,7 +33,7 @@ budgets = [
       threshold                  = "100"
       threshold_type             = "PERCENTAGE"
       notification_type          = "ACTUAL"
-      subscriber_email_addresses = ["example@sourcefuse.com"]
+      subscriber_email_addresses = ["example@example-email.com"]
     }
   },
   {
@@ -48,7 +48,7 @@ budgets = [
       threshold                  = "100"
       threshold_type             = "PERCENTAGE"
       notification_type          = "ACTUAL"
-      subscriber_email_addresses = ["example@sourcefuse.com"]
+      subscriber_email_addresses = ["example@example-email.com"]
     }
   }
 ]
@@ -59,12 +59,12 @@ slack_webhook_url     = null
 slack_channel         = null
 slack_username        = null
 
-billing_notification_emails = ["vijay.stephen@sourcefuse.com"]
+billing_notification_emails = ["example@example-email.com"]
 
 billing_alerts_sns_subscribers = {
-  "email" = {
-    protocol               = "email"
-    endpoint               = "vijay.stephen@sourcefuse.com"
+  "opsgenie" = {
+    protocol               = "https"
+    endpoint               = "https://api.opsgenie.com/v1/json/amazonsns?apiKey=xxxx-xxx-xx-xxx-xxxxxx"
     endpoint_auto_confirms = true
     raw_message_delivery   = false
   }
