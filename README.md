@@ -1,4 +1,6 @@
-# terraform-aws-arc-billing
+# [terraform-aws-arc-billing](https://github.com/sourcefuse/terraform-aws-arc-billing)
+
+[![Known Vulnerabilities](https://github.com/sourcefuse/terraform-aws-arc-billing/actions/workflows/snyk.yaml/badge.svg)](https://github.com/sourcefuse/terraform-aws-arc-billing/actions/workflows/snyk.yaml)
 
 ## Overview
 
@@ -171,7 +173,7 @@ terraform destroy -var-file dev.tfvars
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.28.0 |
 
 ## Modules
 
