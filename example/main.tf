@@ -20,9 +20,9 @@ module "tags" {
   project     = var.project
 
   extra_tags = {
-    Repo         = "github.com/sourcefuse/refarch-devops-infra"
+    Repo         = "github.com/sourcefuse/terraform-aws-arc-billing"
     MonoRepo     = "True"
-    MonoRepoPath = "terraform/security"
+    MonoRepoPath = "terraform/billing"
   }
 }
 
