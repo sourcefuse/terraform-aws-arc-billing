@@ -27,7 +27,6 @@ module "budgets" {
   slack_channel     = var.slack_channel
   slack_username    = var.slack_username
 
-  context = module.this.context
 }
 
 resource "aws_sns_topic_subscription" "this" {

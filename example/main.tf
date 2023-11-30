@@ -12,6 +12,21 @@ terraform {
   }
 }
 
+module "tags" {
+  source  = "sourcefuse/arc-tags/aws"
+  version = "1.2.3"
+
+  environment = var.environment
+  project     = var.project
+
+  extra_tags = {
+    Repo         = "github.com/sourcefuse/terraform-aws-arc-billing"
+    MonoRepo     = "True"
+    MonoRepoPath = "terraform/billing"
+  }
+}
+
+
 provider "aws" {
   region = var.region
 }
@@ -33,4 +48,6 @@ module "example_budgets" {
   slack_username    = var.slack_username
 
   billing_alerts_sns_subscribers = var.billing_alerts_sns_subscribers
+
+  tags = module.tags.tags
 }
