@@ -1,21 +1,33 @@
-# shared
-variable "region" {
+#######################################################################
+## shared
+#######################################################################
+variable "namespace" {
   type        = string
-  default     = "us-east-1"
-  description = "AWS region"
+  description = "Namespace for the resources."
 }
 
 variable "environment" {
   type        = string
-  default     = "debug"
-  description = "ID element. Usually used for region e.g. 'uw2', 'us-west-2', OR role 'prod', 'staging', 'dev', 'UAT'"
+  default     = "poc"
+  description = "environment value, e.g 'prod', 'staging', 'dev', 'UAT'"
 }
 
-variable "namespace" {
+variable "region" {
   type        = string
-  default     = "arc"
-  description = "ID element. Usually an abbreviation of your organization name, e.g. 'eg' or 'cp', to help ensure generated IDs are globally unique"
+  description = "AWS region"
+  default     = "us-east-1"
 }
+
+variable "project" {
+  type        = string
+  description = "The project name"
+  default     = ""
+}
+
+
+#######################################################################
+## budgets & billings alarms
+#######################################################################
 variable "budgets" {
   type        = any
   description = <<-EOF
@@ -52,12 +64,6 @@ variable "slack_username" {
   type        = string
   description = "The username that will appear on Slack messages. Only used when `notifications_enabled` is `true`"
   default     = ""
-}
-
-variable "billing_notification_emails" {
-  type        = list(string)
-  description = "List of email addresses to subscribe to budget sns topic"
-  default     = []
 }
 
 variable "billing_alerts_sns_subscribers" {
