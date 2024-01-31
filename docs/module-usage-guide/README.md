@@ -95,6 +95,7 @@ Understand the security considerations related to AWS Billing when using this mo
 ### Best Practices for AWS billing
 
 Follow best practices to ensure secure Billing configurations.
+[Billing Security on AWS](https://docs.aws.amazon.com/cost-management/latest/userguide/security.html)
 
 ## Contributing and Community Support
 
