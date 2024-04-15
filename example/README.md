@@ -51,7 +51,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_example_budgets"></a> [example\_budgets](#module\_example\_budgets) | sourcefuse/arc-billing/aws | 0.0.1 |
+| <a name="module_example_budgets"></a> [example\_budgets](#module\_example\_budgets) | sourcefuse/arc-billing/aws | 1.0.5 |
 | <a name="module_tags"></a> [tags](#module\_tags) | sourcefuse/arc-tags/aws | 1.2.3 |
 
 ## Resources
