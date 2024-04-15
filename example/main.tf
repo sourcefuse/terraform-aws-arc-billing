@@ -33,7 +33,7 @@ provider "aws" {
 
 module "example_budgets" {
   source  = "sourcefuse/arc-billing/aws"
-  version = "0.0.1"
+  version = "1.0.5"
 
   namespace   = var.namespace
   environment = var.environment
