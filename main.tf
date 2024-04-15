@@ -15,7 +15,7 @@ terraform {
 
 module "budgets" {
   source  = "cloudposse/budgets/aws"
-  version = "0.3.0"
+  version = "0.4.0"
 
   budgets = var.budgets
 
@@ -27,6 +27,7 @@ module "budgets" {
   slack_channel     = var.slack_channel
   slack_username    = var.slack_username
 
+  context = module.this.context
 }
 
 resource "aws_sns_topic_subscription" "this" {
