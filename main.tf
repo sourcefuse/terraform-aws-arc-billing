@@ -15,7 +15,7 @@ terraform {
 
 module "budgets" {
   source  = "cloudposse/budgets/aws"
-  version = "0.4.0"
+  version = "1.0.4"
 
   budgets = var.budgets
 
