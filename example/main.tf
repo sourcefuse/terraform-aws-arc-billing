@@ -49,5 +49,4 @@ module "example_budgets" {
 
   billing_alerts_sns_subscribers = var.billing_alerts_sns_subscribers
 
-  tags = module.tags.tags
 }
