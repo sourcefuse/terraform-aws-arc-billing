@@ -34,6 +34,7 @@ budgets = [
       threshold_type             = "PERCENTAGE"
       notification_type          = "ACTUAL"
       subscriber_email_addresses = ["example@example-email.com"]
+      # subscriber_sns_topic_arns  = [module.sns.sns_topic_arn] // This is required if slack notification is disabled
     }
   },
   {
@@ -49,6 +50,7 @@ budgets = [
       threshold_type             = "PERCENTAGE"
       notification_type          = "ACTUAL"
       subscriber_email_addresses = ["example@example-email.com"]
+      # subscriber_sns_topic_arns  = [module.sns.sns_topic_arn] // This is required if slack notification is disabled
     }
   }
 ]

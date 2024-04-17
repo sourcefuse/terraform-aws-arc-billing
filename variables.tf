@@ -9,7 +9,7 @@ variable "budgets" {
   default     = []
 }
 
-variable "notifications_enabled" {
+variable "slack_notifications_enabled" {
   type        = bool
   description = "Whether or not to setup Slack notifications. Set to `true` to create an SNS topic and Lambda function to send alerts to Slack."
   default     = false
@@ -71,5 +71,11 @@ variable "billing_alerts_sns_subscribers" {
     Boolean indicating whether or not to enable raw message delivery (the original message is directly passed, not wrapped in JSON with the original message in the message property).
     Default is false
   DOC
+  default     = null
+}
+
+variable "sns_topic_arn" {
+  type        = string
+  description = "SNS topic arn, if slack notificaiton is disabled"
   default     = null
 }
