@@ -40,10 +40,10 @@ output "kms_key_id" {
 
 output "sns_topic_arn" {
   description = "ARN of the SNS topic created/used for alerts"
-  value       = var.slacl_notifications_enabled ? module.budgets.sns_topic_arn : module.sns_topic.sns_topic_arn
+  value       = var.slack_notifications_enabled ? module.budgets.sns_topic_arn : var.sns_topic_arn
 }
 
 output "sns_topic_name" {
   description = "The name of the SNS topic created for notifications"
-  value       = var.slacl_notifications_enabled ? module.budgets.sns_topic_name : module.sns_topic.sns_topic_name
+  value       = var.slack_notifications_enabled ? module.budgets.sns_topic_name : null
 }

@@ -33,7 +33,7 @@ module "budgets" {
 resource "aws_sns_topic_subscription" "this" {
   for_each = var.billing_alerts_sns_subscribers
 
-  topic_arn              = var.slack_notifications_enabled ? module.budgets.sns_topic_arn : module.sns_topic.sns_topic_arn
+  topic_arn              = var.slack_notifications_enabled ? module.budgets.sns_topic_arn : var.sns_topic_arn
   protocol               = each.value.protocol
   endpoint               = each.value.endpoint
   endpoint_auto_confirms = each.value.endpoint_auto_confirms

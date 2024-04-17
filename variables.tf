@@ -73,3 +73,9 @@ variable "billing_alerts_sns_subscribers" {
   DOC
   default     = null
 }
+
+variable "sns_topic_arn" {
+  type        = string
+  description = "SNS topic arn, if slack notificaiton is disabled"
+  default     = null
+}
