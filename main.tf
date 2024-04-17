@@ -19,10 +19,9 @@ module "budgets" {
 
   budgets = var.budgets
 
-  notifications_enabled     = var.slack_notifications_enabled
-  encryption_enabled        = var.encryption_enabled
-  kms_master_key_id         = var.budgets_kms_master_key
-  subscriber_sns_topic_arns = var.slack_notifications_enabled ? [] : [module.sns_topic.sns_topic_arn]
+  notifications_enabled = var.slack_notifications_enabled
+  encryption_enabled    = var.encryption_enabled
+  kms_master_key_id     = var.budgets_kms_master_key
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
