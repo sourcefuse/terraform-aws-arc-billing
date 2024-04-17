@@ -33,9 +33,16 @@ module "budgets" {
 resource "aws_sns_topic_subscription" "this" {
   for_each = var.billing_alerts_sns_subscribers
 
-  topic_arn              = module.budgets.sns_topic_arn
+  topic_arn              = var.notifications_enabled ? module.budgets.sns_topic_arn : var.sns_topic_arn
   protocol               = each.value.protocol
   endpoint               = each.value.endpoint
   endpoint_auto_confirms = each.value.endpoint_auto_confirms
   raw_message_delivery   = each.value.raw_message_delivery
+
+  lifecycle {
+    precondition {
+      condition     = var.notifications_enabled == false && var.sns_topic_arn == null ? false : true
+      error_message = "`sns_topic_arn` is mandatory if notifications_enabled is set to false"
+    }
+  }
 }

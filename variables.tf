@@ -15,6 +15,12 @@ variable "notifications_enabled" {
   default     = false
 }
 
+variable "sns_topic_arn" {
+  type        = string
+  description = "SNS Topic for notification , this mandatory if notifications_enabled is false"
+  default     = null
+}
+
 variable "encryption_enabled" {
   type        = bool
   description = "Whether or not to use encryption. If set to `true` and no custom value for KMS key (kms_master_key_id) is provided, a KMS key is created."
