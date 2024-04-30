@@ -14,8 +14,11 @@ terraform {
 
 
 module "budgets" {
-  source  = "cloudposse/budgets/aws"
-  version = "0.4.0"
+  # source  = "cloudposse/budgets/aws"
+  # version = "0.4.1"
+  # WE NEED UNCOMMENT ONCE THE ISSUE https://github.com/cloudposse/terraform-aws-budgets/issues/40 IS CLOSED
+  source = "github.com/cloudposse/terraform-aws-budgets?ref=0.4.1"
+
 
   budgets = var.budgets
 
