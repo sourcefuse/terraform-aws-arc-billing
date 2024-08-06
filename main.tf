@@ -2,22 +2,20 @@
 ## defaults
 ################################################################################
 terraform {
-  required_version = "~> 1.5"
+  required_version = ">= 1.4, < 2.0.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = ">= 4.0, < 6.0"
     }
   }
 }
 
 
 module "budgets" {
-  # source  = "cloudposse/budgets/aws"
-  # version = "0.4.1"
-  # WE NEED UNCOMMENT ONCE THE ISSUE https://github.com/cloudposse/terraform-aws-budgets/issues/40 IS CLOSED
-  source = "github.com/cloudposse/terraform-aws-budgets?ref=0.4.1"
+  source  = "cloudposse/budgets/aws"
+  version = "0.4.1"
 
 
   budgets = var.budgets
