@@ -31,6 +31,8 @@ Manages AWS Budgets with SNS alerts, optional Slack notifications via Lambda, an
 - KMS encryption for SNS topics
 - Service-level cost filters
 
+For more information about this repository and its usage, please see [Terraform AWS BILLING Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-billing/blob/main/docs/module-usage-guide/README.md).
+
 ## Getting Started
 
 1. **Define the Module**
